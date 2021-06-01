@@ -1,5 +1,13 @@
 import random
 
+def initialize_registers_to_zero(window_regs):
+    instrs = []
+    for reg in window_regs:
+        temp_instr = f'sethi %hi(0x00000000), %{reg}\n'
+        temp_instr += f'or %{reg}, %lo(0x00000000), %{reg}\n'
+        instrs.append(temp_instr)
+    return instrs
+
 def get_13bit_imm():
     number = random.choice(range(0, 2**13))
     hex_number = hex(number)

@@ -1,16 +1,10 @@
-! Test for checking "or instruction"
-! Author : Aniket Deshmukh
-! 18 August 2015
-!
-! NOTE : register g1 is reserved for storing the trap number.
-! On normal exit a test should end in trap 0, so g1=0x80.
-! Upon exit with an error condition during testing, g1=0xBAD
-
-
-
 .global main
 main:
 _start:
+	! set the default cacheable bit in the AJIT mmu so that
+	! the ^%%#& cache is exercised.  The mmu stays disabled.
+	set 0x100, %o0
+        sta %o0, [%g0] 0x4      
 
 	! Initialize PSR, enable traps.
 	! set PSR with ET=1 PS=1 S=1, all other fields=0
@@ -19,53 +13,130 @@ _start:
 	nop	! insert nops here because
 	nop	! writes to psr may be delayed 
 	nop	
-
+	
+	
 	!store base of trap table in TBR register
 	set	trap_table_base, %l0
 	wr	%l0, 0x0, %tbr
 	nop	! insert nops here because
 	nop	! writes to tbr may be delayed
 	nop
-
+	
 	!Initialize g1. Upon a trap, g1 should be 
 	!overwritten by the trap number
 	mov 0xBAD, %g1
+sethi %hi(0x00000000), %g0
+or %g0, %lo(0x00000000), %g0
 
-	!======================================
-	! Instruction test
-	!
-	! instruction = OR
+sethi %hi(0x00000000), %g1
+or %g1, %lo(0x00000000), %g1
 
-	! OR complementary bits
-	sethi %hi(0xAAAAAAAA),%g2
-	or    %g2,%lo(0xAAAAAAAA),%g2
-	sethi %hi(0x55555555),%g3
-	add    %g3,%lo(0x55555555),%g3
-	rd %psr, %i0
-	and %g2,%g3,%g4
-	rd %psr, %i1 
+sethi %hi(0x00000000), %g2
+or %g2, %lo(0x00000000), %g2
 
-	! OR same bits
-	sethi %hi(0xAAAAAAAA),%l0
-	or    %l0,%lo(0xAAAAAAAA),%l0
-	or %l0,%l0,%l2 
-	rd %psr, %i2	
+sethi %hi(0x00000000), %g3
+or %g3, %lo(0x00000000), %g3
 
+sethi %hi(0x00000000), %g4
+or %g4, %lo(0x00000000), %g4
 
-	ta 0
+sethi %hi(0x00000000), %g5
+or %g5, %lo(0x00000000), %g5
+
+sethi %hi(0x00000000), %g6
+or %g6, %lo(0x00000000), %g6
+
+sethi %hi(0x00000000), %g7
+or %g7, %lo(0x00000000), %g7
+
+sethi %hi(0x00000000), %o0
+or %o0, %lo(0x00000000), %o0
+
+sethi %hi(0x00000000), %o1
+or %o1, %lo(0x00000000), %o1
+
+sethi %hi(0x00000000), %o2
+or %o2, %lo(0x00000000), %o2
+
+sethi %hi(0x00000000), %o3
+or %o3, %lo(0x00000000), %o3
+
+sethi %hi(0x00000000), %o4
+or %o4, %lo(0x00000000), %o4
+
+sethi %hi(0x00000000), %o5
+or %o5, %lo(0x00000000), %o5
+
+sethi %hi(0x00000000), %o6
+or %o6, %lo(0x00000000), %o6
+
+sethi %hi(0x00000000), %o7
+or %o7, %lo(0x00000000), %o7
+
+sethi %hi(0x00000000), %l0
+or %l0, %lo(0x00000000), %l0
+
+sethi %hi(0x00000000), %l1
+or %l1, %lo(0x00000000), %l1
+
+sethi %hi(0x00000000), %l2
+or %l2, %lo(0x00000000), %l2
+
+sethi %hi(0x00000000), %l3
+or %l3, %lo(0x00000000), %l3
+
+sethi %hi(0x00000000), %l4
+or %l4, %lo(0x00000000), %l4
+
+sethi %hi(0x00000000), %l5
+or %l5, %lo(0x00000000), %l5
+
+sethi %hi(0x00000000), %l6
+or %l6, %lo(0x00000000), %l6
+
+sethi %hi(0x00000000), %l7
+or %l7, %lo(0x00000000), %l7
+
+sethi %hi(0x00000000), %i0
+or %i0, %lo(0x00000000), %i0
+
+sethi %hi(0x00000000), %i1
+or %i1, %lo(0x00000000), %i1
+
+sethi %hi(0x00000000), %i2
+or %i2, %lo(0x00000000), %i2
+
+sethi %hi(0x00000000), %i3
+or %i3, %lo(0x00000000), %i3
+
+sethi %hi(0x00000000), %i4
+or %i4, %lo(0x00000000), %i4
+
+sethi %hi(0x00000000), %i5
+or %i5, %lo(0x00000000), %i5
+
+sethi %hi(0x00000000), %i6
+or %i6, %lo(0x00000000), %i6
+
+sethi %hi(0x00000000), %i7
+or %i7, %lo(0x00000000), %i7
+
+ta 0			! end of test
 	nop
 	nop
-
-	! End of test
+	
 	!======================================
-
 	!control should NOT reach here
-	not_reached:
+not_reached:
 	set 0xDEAD, %g1
 	ta 0
 	nop
 	nop
 
+
+	.align 2
+	data_A: .word 0xA
+	data_B: .word 0xB
 
 
 	!====================================

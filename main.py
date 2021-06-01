@@ -1,6 +1,6 @@
 import json
 import random
-from helper import write_to_asm, generate_integer_alu_instr, generate_data_transfer_instr, generate_control_transfer_instr
+from helper import *
 
 global_reg = ['g0', 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7']
 out_reg = ['o0', 'o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7']
@@ -39,7 +39,8 @@ if __name__=="__main__":
     instrs_set = json.load(instr_file)
     instr_file.close()
     reg_file.close()
-
-    for i in range(5):
-        generate_instr(instrs_set)
+    for instr in initialize_registers_to_zero(window_regs):
+        Instructions_Generated.append(instr)
+    # for i in range(5):
+    #     generate_instr(instrs_set)
     write_to_asm(Instructions_Generated)

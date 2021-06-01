@@ -1,0 +1,7 @@
+1. ERROR :	g2,	id = 2, 	expected = 0x20,  		actual = 0xaaaaaaaa (mask=0xffffffff) (cpu-id=0)
+2. correct :	g1,	id = 1, 	expected = 0x80,  		actual = 0x80 (mask=0xffffffff) (cpu-id=0)
+3. correct :	i0,	id = 24, 	expected = 0xe0,  		actual = 0xe0 (mask=0xffffffff) (cpu-id=0)
+4. ERROR :	g4,	id = 4, 	expected = 0xffffffff,  		actual = 0x0 (mask=0xffffffff) (cpu-id=0)
+5. correct :	i1,	id = 25, 	expected = 0xe0,  		actual = 0xe0 (mask=0xffffffff) (cpu-id=0)
+6. correct :	l2,	id = 18, 	expected = 0xaaaaaaaa,  		actual = 0xaaaaaaaa (mask=0xffffffff) (cpu-id=0)
+7. correct :	i2,	id = 26, 	expected = 0xe0,  		actual = 0xe0 (mask=0xffffffff) (cpu-id=0)

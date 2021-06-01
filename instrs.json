@@ -1,0 +1,43 @@
+{
+    "integer_alu": {
+        "AND": "",
+        "ANDcc": "",
+        "ANDN": "",
+        "ANDNcc": "",
+        "OR": "",
+        "ORcc": "",
+        "ORN": "",
+        "ORNcc": "",
+        "SLL": "",
+        "SRA": "",
+        "SRL": "",
+        "XNOR": "",
+        "XNORcc": "",
+        "XOR": "",
+        "XORcc": ""
+       },
+    "data_transfer": {
+        "LD": "",
+        "LDA": "",
+        "LDD": "",
+        "LDDA": "",
+        "LDSB": "",
+        "LDSBA": "",
+        "LDSH": "",
+        "LDSHA": "",
+        "LDUB": "",
+        "LDUBA": "",
+        "LDUH": "",
+        "LDUHA": "",
+        "ST": "",
+        "STA": "",
+        "STBA": "",
+        "STD": "",
+        "STDA": "",
+        "STHA": "",
+        "STSB": "",
+        "STSH": "",
+        "STUB": "",
+        "STUH": ""
+    }
+}

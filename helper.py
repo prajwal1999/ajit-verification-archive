@@ -13,7 +13,15 @@ def get_13bit_imm():
     hex_number = hex(number)
     return hex_number.split('x')[1]
 
-def write_to_asm(Instructions_Generated):
+def write_zeros_to_vprj(vprj_file, window_regs):
+    vprj_file.write('SOURCES = main.s\n\n\n\n')
+    vprj_file.write('RESULTS = \n')
+    for reg in window_regs:
+        vprj_file.write(f'{reg}=0x00000000\n')
+    vprj_file.write(f'psr=0x00000000\n')
+
+
+def write_to_asm(Instructions_Generated, window_regs):
     asm_file = open('files/main.s', 'w')
     vprj_file = open('files/main.vprj', 'w')
     prologue_file = open('prologue.s', 'r')
@@ -24,9 +32,8 @@ def write_to_asm(Instructions_Generated):
         asm_file.write('\n')
         print(instr)
     asm_file.write(epilogue_file.read())
-    vprj_file.write('SOURCES = main.s\n\n\n\n')
-    vprj_file.write('RESULTS = \n')
-    vprj_file.write('g1=0x00000080')
+    write_zeros_to_vprj(vprj_file, window_regs)
+    
     asm_file.close()
     vprj_file.close()
     prologue_file.close()

@@ -1,0 +1,1 @@
+{"mov": 8, "sta": 1, "nop": 7, "sethi": 2, "clr": 1, "ld": 0, "ta": 0, "or": 0, "unimp": 0, "restore": 1}

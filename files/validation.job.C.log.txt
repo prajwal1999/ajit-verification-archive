@@ -1,2 +1,2 @@
 Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
-1	:	1622528363.820	     0.094	0	2890	1	0	python /home/prajwal/Public/Digital/ajit-toolchain/tools/scripts/validation_inner_env_v3.py -C /home/prajwal/Public/Digital/ajit-verification/files/main.vprj
+1	:	1623557859.306	     0.036	0	1532	1	0	python /home/prajwal/Public/Digital/ajit-toolchain/tools/scripts/validation_inner_env_v3.py -C /home/prajwal/Public/Digital/ajit-verification/files/main.vprj

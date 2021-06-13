@@ -41,6 +41,6 @@ if __name__=="__main__":
     reg_file.close()
     for instr in initialize_registers_to_zero(window_regs):
         Instructions_Generated.append(instr)
-    # for i in range(5):
-    #     generate_instr(instrs_set)
-    write_to_asm(Instructions_Generated)
+    for i in range(5):
+        generate_instr(instrs_set)
+    write_to_asm(Instructions_Generated, window_regs)

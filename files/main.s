@@ -121,6 +121,8 @@ or %i6, %lo(0x00000000), %i6
 sethi %hi(0x00000000), %i7
 or %i7, %lo(0x00000000), %i7
 
+
+
 ta 0			! end of test
 	nop
 	nop
